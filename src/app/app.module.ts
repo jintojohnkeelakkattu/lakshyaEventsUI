@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
 import { AdminDashBoardComponent } from './admin-dash-board/admin-dash-board.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AdminDashBoardComponent } from './admin-dash-board/admin-dash-board.com
     AdminDashBoardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
