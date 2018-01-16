@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
 import { AdminDashBoardComponent } from './admin-dash-board/admin-dash-board.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { HttpClientModule  } from '@angular/common/http';
+import { ClientserviceService } from './clientservice.service';
 
 
 @NgModule({
@@ -16,9 +17,15 @@ import { AppRoutingModule } from './/app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    ClientserviceService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }
