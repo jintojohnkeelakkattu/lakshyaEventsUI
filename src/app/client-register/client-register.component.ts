@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import{ClientserviceService} from '../clientservice.service';
 import {FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { Client } from './client';
-
+import {Message} from 'primeng/components/common/api';
+import { MessageService } from '../message.service';
 @Component({
   selector: 'app-client-register',
   templateUrl: './client-register.component.html',
@@ -18,7 +19,8 @@ export class ClientRegisterComponent implements OnInit {
   emailAddress : String; 
   contactNumber : String; 
   alternateNumber : String; 
-  constructor( private apiControllerSerivce:ClientserviceService) { 
+  msgs: Message[] = [];
+  constructor( private apiControllerSerivce:ClientserviceService,public messageService: MessageService) { 
     this.clientName = '';
     this.clientAddress = '';
     this.emailAddress = '';
@@ -36,7 +38,9 @@ export class ClientRegisterComponent implements OnInit {
        this.contactNumber.toString(),
        this.alternateNumber.toString()
     ) 
-    this.apiControllerSerivce.postregistration(JSON.stringify(usermodel));
+   this.apiControllerSerivce.postregistration(JSON.stringify(usermodel));
+ 
+  
    }
   ngOnInit() {
   }

@@ -8,6 +8,9 @@ import { AdminDashBoardComponent } from './admin-dash-board/admin-dash-board.com
 import { HttpClientModule  } from '@angular/common/http';
 import { ClientserviceService } from './clientservice.service';
 
+import {MessagesModule} from 'primeng/messages';
+ import {MessageModule} from 'primeng/message';
+import { MessageService } from './message.service';
 
 @NgModule({
   declarations: [
@@ -19,10 +22,13 @@ import { ClientserviceService } from './clientservice.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+     MessagesModule,
+    MessageModule
   ],
   providers: [
-    ClientserviceService
+    ClientserviceService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
