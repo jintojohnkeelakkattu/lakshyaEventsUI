@@ -17,35 +17,58 @@
             </div>
         
         </div>
+        <div *ngIf="messageService.SuccessMessage.length">
+          <div class="alert alert-success alert-dismissible" role="alert" >
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true" (click)="messageService.clear()" >×</button>
+              <ul>
+                  <li *ngFor="let message of messageService.SuccessMessage">
+                      {{ message }}
+                  </li>
+              </ul>
+          </div>
+      
+      </div>
+      <div *ngIf="messageService.ValidationMessage.length">
+        <div class="alert alert-warning alert-dismissible" role="alert" >
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true" (click)="messageService.clear()" >×</button>
+            <ul>
+                <li *ngFor="let message of messageService.ValidationMessage">
+                    {{ message }}
+                </li>
+            </ul>
+        </div>
+    
+    </div>
         <h3 class="box-title">Client Details</h3>
       </div>
       <!-- /.box-header -->
       <!-- form start -->
-      <form role="form">
+      <form  [formGroup]="ClientForm">
             <div class="box-body">
               <div class="form-group">                              
                 <label for="exampleInputEmail1">Client Name</label>
-                <input type="text" [(ngModel)]="clientName" name="clientName" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Client Name"  >
+                <input type="text"   formControlName="clientName"  class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Client Name"  >
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Client Address</label>
-                 <textarea class="form-control" [(ngModel)]="clientAddress" name="clientAddress" id="exampleFormControlTextarea1" rows="3"></textarea>
+                 <textarea class="form-control"  formControlName="clientAddress" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>   
               <div class="form-group">                              
                     <label for="exampleInputEmail1">Email Address</label>
-                    <input type="email" [(ngModel)]="emailAddress" name="emailAddress" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Client Name">
+                    <input type="email"  formControlName="emailAddress"  class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Client Name">
               </div>  
               <div class="form-group">                              
                     <label for="exampleInputEmail1">Contact No</label>
-                    <input type="text" [(ngModel)]="contactNumber" name="contactNumber" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Client Name">
+                    <input type="text" formControlName="contactNumber"  class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Client Name">
               </div> 
               <div class="form-group">                              
                     <label for="exampleInputEmail1">Alternative Contact No</label>
-                    <input type="text" [(ngModel)]="alternateNumber"  name="alternateNumber"  class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Client Name">
+                    <input type="text"   formControlName="alternateNumber" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Client Name">
               </div>                      
               <div class="box-footer">
                 <button type="submit" class="btn btn-default">Clear</button>
-                <button type="submit" (click)="RegisterClientPrimaryDetails()" class="btn btn-info pull-right">Submit</button>
+                <button type="submit" *ngIf="successfulSave"  (click)="UpdateClientDetails()" class="btn btn-info pull-right">Update</button>
+                <button type="submit"  *ngIf="!successfulSave" (click)="RegisterClientPrimaryDetails()" class="btn btn-info pull-right">Submit</button>
               </div>
             </div>
      </form>

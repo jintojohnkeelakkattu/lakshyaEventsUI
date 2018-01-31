@@ -7,7 +7,7 @@ import { ClientRegisterComponent } from './client-register/client-register.compo
 import { AdminDashBoardComponent } from './admin-dash-board/admin-dash-board.component';
 import { HttpClientModule  } from '@angular/common/http';
 import { ClientserviceService } from './clientservice.service';
-
+import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
 import {MessagesModule} from 'primeng/messages';
  import {MessageModule} from 'primeng/message';
 import { MessageService } from './message.service';
@@ -16,7 +16,8 @@ import { MessageService } from './message.service';
   declarations: [
     AppComponent,
     ClientRegisterComponent,
-    AdminDashBoardComponent
+    AdminDashBoardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,8 @@ import { MessageService } from './message.service';
     HttpClientModule,
     FormsModule,
      MessagesModule,
-    MessageModule
+    MessageModule,
+    ReactiveFormsModule
   ],
   providers: [
     ClientserviceService,
